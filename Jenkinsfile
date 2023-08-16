@@ -1,47 +1,23 @@
 pipeline {
     agent any
-
-    environment {
-        AWS_DEFAULT_REGION = 'us-east-1'
+    tools {
+        terraform 'Terraform-1.0.10'
     }
 
     stages {
-        stage('Checkout') {
+         stage('Git checkout') {
             steps {
-                checkout scm
+                git branch: 'teraformdemo', url: 'https://github.com/ShikhaSiddhi/Demopipline.git'
             }
         }
-
         stage('Terraform Init') {
             steps {
-                script {
-                    sh 'terraform init'
-                }
+                sh 'terraform init'
             }
         }
-
-        stage('Terraform Plan') {
+          stage('Terraform Apply') {
             steps {
-                script {
-                    sh 'terraform plan -out=tfplan'
-                }
-            }
-        }
-
-        stage('Terraform Apply') {
-            steps {
-                script {
-                    sh 'terraform apply tfplan'
-                }
-            }
-        }
-    }
-
-    post {
-        always {
-            // Clean up and destroy resources if needed
-            script {
-                sh 'terraform destroy -auto-approve'
+                sh 'terraform apply --auto approve'
             }
         }
     }
