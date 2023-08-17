@@ -1,13 +1,23 @@
-provider "aws" {
-  region = "ap-southeast-2"  # Update with your desired AWS region
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.16"
+    }
+  }
+
+  required_version = ">= 1.2.0"
 }
 
-resource "aws_instance" "example_instanceSS" {
-  ami           = "ami-0310483fb2b488153"  # Amazon Linux 2 AMI ID
+provider "aws" {
+  region  = "ap-southeast-2"
+}
+
+resource "aws_instance" "app_server" {
+  ami           = "ami-830c94e3"
   instance_type = "t2.micro"
-  key_name      = "HandsonKey"  # Update with your key pair name
 
   tags = {
-    Name = "ExampleInstanceSS"
+    Name = "ExampleAppServerInstance"
   }
 }
