@@ -2,7 +2,7 @@ AWSTemplateFormatVersion:  "2010-09-09"
 Description: "Create Ec2 instance"
 
 Parameters: 
-  InstanceTypeParameter:
+  InstanceType:
     Description: Select instance type
     Type: String
     Default: t2.micro
@@ -16,5 +16,5 @@ Resources:
     Instance:
         Type: AWS::EC2::Instance
         Properties:
-          InstanceType: !Ref InstanceTypeParameter
+          InstanceType: !Ref InstanceType
           ImageId: ami-06ddbc40823fba89a
