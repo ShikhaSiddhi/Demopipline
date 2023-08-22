@@ -18,3 +18,6 @@ Resources:
         Properties:
           InstanceType: !Ref InstanceType
           ImageId: ami-06ddbc40823fba89a
+          Tags:
+               - Value: CloudFormationEc2
+                 Key: Name
