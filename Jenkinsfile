@@ -27,9 +27,9 @@ pipeline {
         }
     }
 
-    post {
-        always {
+    //post {
+       // always {
             // Cleanup or additional steps can be added here
-        }
-    }
+       // }
+    //}
 }
