@@ -27,9 +27,15 @@ pipeline {
         }
     }
 
-    //post {
-       // always {
+    post {
+        always {
             // Cleanup or additional steps can be added here
-       // }
-    //}
+             emailext(
+                subject: 'Build Successful',
+                body: 'Your build was successful!',
+                recipientProviders: [[$class: 'CulpritsRecipientProvider']],
+                to: 'pankajknuj@gmail.com'
+            )
+        }
+    }
 }
