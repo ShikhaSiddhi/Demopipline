@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    parameters {
+    environment {
         AWS_DEFAULT_REGION = 'ap-southeast-2' // Replace with your AWS region
         STACK_NAME = 'Ec2Stack'         // Replace with your CloudFormation stack name
         TEMPLATE_FILE = 'ec2Provision.yaml'   // Replace with your CloudFormation template file
