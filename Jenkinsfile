@@ -26,6 +26,15 @@ pipeline {
             }
         }
     }
+     post {
+        always {
+            emailext(
+                subject: "Jenkins Build ${currentBuild.result}",
+                body: "Jenkins The build is ${currentBuild.result}.",
+                to: "pankajknuj@gmail.com"
+            )
+        }
+    }
 
   
 }
